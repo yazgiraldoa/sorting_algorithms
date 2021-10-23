@@ -45,7 +45,6 @@ void quickSort(int arr[], int low, int high, size_t size)
 	{
 		/* pi is partitioning index, arr[p] is now at right place */
 		pi = partition(arr, low, high, size);
-		print_array(arr, size);
 
 		/* partition and after partition */
 		quickSort(arr, low, pi - 1, size);
@@ -80,10 +79,12 @@ int partition(int arr[], int low, int high, size_t size)
 			/* increment index of smaller element */
 			i++;
 			swap_array(&arr[i], &arr[j]);
-			/* print_array(arr, size); */
+			if (i != j)
+				print_array(arr, size);
 		}
 	}
 	swap_array(&arr[i + 1], &arr[high]);
-	(void)size;
+	if (i != j)
+		print_array(arr, size);
 	return (i + 1);
 }
