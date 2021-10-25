@@ -78,13 +78,19 @@ int partition(int arr[], int low, int high, size_t size)
 		{
 			/* increment index of smaller element */
 			i++;
-			swap_array(&arr[i], &arr[j]);
 			if (i != j)
+			{
+				swap_array(&arr[i], &arr[j]);
 				print_array(arr, size);
+			}
 		}
 	}
-	swap_array(&arr[i + 1], &arr[high]);
-	if (i != j)
-		print_array(arr, size);
-	return (i);
+
+	if (i + 1 != high)
+	{
+		swap_array(&arr[i + 1], &arr[high]);
+		if (i != j)
+			print_array(arr, size);
+	}
+	return (i + 1);
 }
